@@ -1,6 +1,8 @@
-from fastapi import FastAPI
-from core.settings import db
+from settings import db
+from routes import app
 
+
+# Database connection test
 def db_connection():
     try:
         db.list_collection_names()
@@ -8,9 +10,10 @@ def db_connection():
     except Exception as e:
         print(f"Failed to connect to database: {e}")
 
+
 def start_application():
-    app = FastAPI()
     db_connection()
     return app
+
 
 app = start_application()
